@@ -157,7 +157,7 @@ export default function Hero() {
                   href="#"
                   onClick={e => e.preventDefault()}
                   data-cursor-label="GO"
-                  className="cta-primary"
+                  className="cta-primary justify-between w-full sm:w-auto"
                   style={{ padding: '14px 28px', fontSize: '12px', gap: '12px' }}
                 >
                   <span>See it on your data</span>
