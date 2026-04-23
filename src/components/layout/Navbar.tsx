@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 w-full z-50 flex items-center px-8 md:px-14 border-b border-structural h-16"
+      className="fixed top-0 left-0 w-full z-50 flex items-center px-8 md:px-14 xl:px-20 2xl:px-28 border-b border-structural h-16"
       style={{ backgroundColor: 'rgba(248,244,239,0.85)' }}
       initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -10 }}
       animate={{ opacity: 1, y: 0 }}

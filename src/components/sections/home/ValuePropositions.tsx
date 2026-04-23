@@ -64,7 +64,7 @@ export default function ValuePropositions() {
     <section style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#EFEBE6' }}>
       <div className="nucleate-grain" style={{ zIndex: 1, opacity: 0.14 }} aria-hidden="true" />
       <div
-        className="w-full px-6 md:px-14 xl:px-20 2xl:px-28"
+        className="w-full px-8 md:px-14 xl:px-20 2xl:px-28"
         style={{ position: 'relative', zIndex: 2, paddingTop: 'clamp(48px, 7vw, 120px)', paddingBottom: 'clamp(80px, 9vw, 140px)' }}
       >
 

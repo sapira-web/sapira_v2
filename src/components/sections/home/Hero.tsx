@@ -83,7 +83,7 @@ export default function Hero() {
         </motion.div>
 
         {/* ── Content — scroll-dissolves as image rises ───────────────────── */}
-        <div className="relative z-10 h-full flex flex-col px-6 md:px-14 xl:px-20 2xl:px-28 pt-24 md:pt-[18vh]">
+        <div className="relative z-10 h-full flex flex-col px-8 md:px-14 xl:px-20 2xl:px-28 pt-24 md:pt-[18vh]">
           <motion.div style={{ opacity: textOpacity, filter: textFilter }}>
 
             {/* Eyebrow */}

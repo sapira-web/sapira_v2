@@ -48,7 +48,7 @@ export default function BrandClose() {
       />
       <div className="nucleate-grain" style={{ zIndex: 1, opacity: 0.09 }} aria-hidden="true" />
       <motion.p
-        className="px-6 md:px-14 xl:px-20 2xl:px-28"
+        className="px-8 md:px-14 xl:px-20 2xl:px-28"
         style={{
           position: 'relative',
           zIndex: 2,
