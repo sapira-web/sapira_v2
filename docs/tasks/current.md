@@ -1,33 +1,34 @@
-TASK: VALUE PROPOSITIONS MODULE REFINEMENT
+TASK: NAVBAR REFINEMENT
 
 OBJECTIVE
-Refine the value propositions module so it feels sharper, more intentional, and more integrated into Sapira’s overall visual system.
+Refine the navbar so it feels fully aligned with Sapira’s world-class, infrastructural, editorial tone.
 
 SCOPE
-- composition
-- hierarchy
+- layout
 - spacing
 - typography
-- relationship between text and visual support
-- block-to-block rhythm
+- visual weight
+- background behavior
+- CTA hierarchy
+- scroll behavior
 - desktop and mobile quality
 
 CONSTRAINTS
-- do not redesign the whole page
-- do not touch the hero
-- do not touch the operational presence block
-- do not change the core content meaning
-- do not add decorative effects without purpose
+- do not redesign the whole site
+- do not touch hero copy
+- do not touch section structure below the hero
+- do not add decorative UI patterns without purpose
 
 DO NOT TOUCH
-- hero
-- navbar
-- operational presence / logos block
+- hero content
+- Operational Presence
+- Value Propositions
+- BrandClose
 - global design system unless strictly necessary
 
 DONE CRITERIA
-- the module feels premium and editorial
-- each proposition reads clearly and with enough presence
-- the rhythm between items is intentional
-- the section feels less generic and more specific to Sapira
+- the navbar feels quieter, more precise, and more intentional
+- it does not set a SaaS tone before the hero has spoken
+- it feels integrated with the atmospheric system
+- CTA hierarchy is correct
 - desktop and mobile both feel resolved
