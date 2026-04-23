@@ -34,17 +34,6 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-
-          {/* CTA — min touch target 44px */}
-          <a
-            href="#"
-            className="text-nav font-medium uppercase min-h-[44px] flex items-center cursor-pointer transition-colors duration-200"
-            style={{ color: 'rgba(73,72,72,0.45)', letterSpacing: '0.10em' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(73,72,72,0.82)' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(73,72,72,0.45)' }}
-          >
-            See it on your data →
-          </a>
         </nav>
     </motion.header>
   );
