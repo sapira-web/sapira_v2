@@ -1,6 +1,7 @@
 'use client'
 
 import type React from 'react'
+import { useState, useEffect } from 'react'
 import {
   siApple, siAudi, siBmw,
   siFacebook, siWhatsapp, siRevolut,
@@ -8,11 +9,17 @@ import {
 } from 'simple-icons'
 import { useReducedMotion } from 'framer-motion'
 
+// ── Desktop constants ────────────────────────────────────────────────────────
 const W       = 210
-const H1      = 168   // row 1 card height
-const H2      = 152   // row 2 card height — ~10% smaller, implies depth
+const H1      = 168
+const H2      = 152
 const PAD     = 28
 const ROW_GAP = 48
+
+// ── Mobile overrides ─────────────────────────────────────────────────────────
+const H1_M    = 128
+const PAD_M   = 20
+const LOGO_M  = 0.85   // scale factor applied to all logo heights
 
 type LogoEntry = {
   icon:         { path: string }
@@ -38,10 +45,8 @@ const logos: LogoEntry[] = [
 
 const logosRow2 = [...logos.slice(4), ...logos.slice(0, 4)]
 
-// Height omitted from cardBase — passed explicitly per strip so rows can differ
 const cardBase: React.CSSProperties = {
   width:                `${W}px`,
-  padding:              `${PAD}px`,
   boxSizing:            'border-box',
   flexShrink:           0,
   background:           'linear-gradient(160deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.26) 100%)',
@@ -59,12 +64,16 @@ function Strip({
   className,
   duration,
   cardHeight,
+  cardPad,
+  hFactor = 1,
   delay,
 }: {
   items:       LogoEntry[]
   className:   string
   duration:    string
   cardHeight:  number
+  cardPad:     number
+  hFactor?:    number
   delay?:      string
 }) {
   return (
@@ -83,6 +92,7 @@ function Strip({
           key={i}
           style={{
             ...cardBase,
+            padding:     `${cardPad}px`,
             height:      `${cardHeight}px`,
             marginRight: `${gap}px`,
             transform:   cardOffsetY !== 0 ? `translateY(${cardOffsetY}px)` : undefined,
@@ -93,7 +103,7 @@ function Strip({
             aria-label={label}
             viewBox="0 0 24 24"
             style={{
-              height:    `${h}px`,
+              height:    `${h * hFactor}px`,
               width:     'auto',
               fill:      `rgba(30,28,26,${logoOpacity})`,
               transform: logoScale !== 1 ? `scale(${logoScale})` : undefined,
@@ -111,12 +121,26 @@ function Strip({
 export default function OperationalPresence() {
   const shouldReduceMotion = useReducedMotion()
 
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  const cardHeight = isMobile ? H1_M    : H1
+  const cardPad    = isMobile ? PAD_M   : PAD
+  const hFactor    = isMobile ? LOGO_M  : 1
+  const duration   = isMobile ? '68s'   : '54s'
+  const padding    = isMobile ? '40px 0' : 'clamp(48px, 6vw, 80px) 0'
+
   return (
     <section
       style={{
         position:        'relative',
         width:           '100%',
-        padding:         'clamp(48px, 6vw, 80px) 0',
+        padding,
         backgroundColor: 'transparent',
         overflow:        'hidden',
       }}
@@ -133,20 +157,20 @@ export default function OperationalPresence() {
         }}
       />
 
-      {/* Grain — same visual language as adjacent sections, lower intensity */}
+      {/* Grain */}
       <div className="nucleate-grain" style={{ zIndex: 1, opacity: 0.16 }} aria-hidden="true" />
 
       {/* Carousel content */}
       <div style={{ position: 'relative', zIndex: 2 }}>
 
-{shouldReduceMotion ? (
+        {shouldReduceMotion ? (
 
           /* ── Reduced motion — static grid ── */
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '22px', padding: '0 48px' }}>
             {logos.map(({ icon, h, logoOpacity, label }, i) => (
-              <div key={i} style={{ ...cardBase, height: `${H1}px` }}>
+              <div key={i} style={{ ...cardBase, padding: `${cardPad}px`, height: `${cardHeight}px` }}>
                 <svg role="img" aria-label={label} viewBox="0 0 24 24"
-                  style={{ height: `${h}px`, width: 'auto', fill: `rgba(30,28,26,${logoOpacity})`, display: 'block' }}>
+                  style={{ height: `${h * hFactor}px`, width: 'auto', fill: `rgba(30,28,26,${logoOpacity})`, display: 'block' }}>
                   <path d={icon.path} />
                 </svg>
               </div>
@@ -155,28 +179,33 @@ export default function OperationalPresence() {
 
         ) : (
 
-          /* ── Counter-motion two-row carousel ── */
           <>
-            {/* Row 1 — foreground plane */}
+            {/* Row 1 — always rendered (desktop + mobile) */}
             <Strip
-              items={[...logos,     ...logos    ]}
+              items={[...logos, ...logos]}
               className="marquee-strip"
-              duration="54s"
-              cardHeight={H1}
+              duration={duration}
+              cardHeight={cardHeight}
+              cardPad={cardPad}
+              hFactor={hFactor}
             />
 
-            <div style={{ height: `${ROW_GAP}px` }} aria-hidden="true" />
-
-            {/* Row 2 — background plane: smaller cards, lower opacity */}
-            <div style={{ opacity: 0.58 }}>
-              <Strip
-                items={[...logosRow2, ...logosRow2]}
-                className="marquee-strip-reverse"
-                duration="52s"
-                cardHeight={H2}
-                delay="-6s"
-              />
-            </div>
+            {/* Row 2 — desktop only, not rendered on mobile */}
+            {!isMobile && (
+              <>
+                <div style={{ height: `${ROW_GAP}px` }} aria-hidden="true" />
+                <div style={{ opacity: 0.58 }}>
+                  <Strip
+                    items={[...logosRow2, ...logosRow2]}
+                    className="marquee-strip-reverse"
+                    duration="52s"
+                    cardHeight={H2}
+                    cardPad={PAD}
+                    delay="-6s"
+                  />
+                </div>
+              </>
+            )}
           </>
 
         )}
