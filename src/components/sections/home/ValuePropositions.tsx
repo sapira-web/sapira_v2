@@ -186,7 +186,7 @@ export default function ValuePropositions() {
               </motion.p>
               <motion.h3
                 style={{
-                  fontSize: '20px', fontWeight: 400, lineHeight: 1.24,
+                  fontSize: '22px', fontWeight: 400, lineHeight: 1.24,
                   letterSpacing: '-0.026em', color: '#1F1C1A', marginBottom: '14px',
                 }}
                 {...element(i, 0.10, { y: 12, blur: 2, duration: 0.85 })}
@@ -194,7 +194,7 @@ export default function ValuePropositions() {
                 {col.title}
               </motion.h3>
               <motion.p
-                style={{ fontSize: '15px', lineHeight: 1.72, letterSpacing: '-0.012em', color: 'rgba(73,72,72,0.60)' }}
+                style={{ fontSize: '17px', lineHeight: 1.72, letterSpacing: '-0.012em', color: 'rgba(73,72,72,0.60)' }}
                 {...element(i, 0.20, { y: 8, blur: 0, duration: 0.80 })}
               >
                 {col.body}
