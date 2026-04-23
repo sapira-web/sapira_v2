@@ -80,6 +80,7 @@ export default function Hero() {
           style={{ willChange: 'transform, opacity' }}
         >
           <div className="hero-bg absolute inset-0" aria-hidden="true" />
+          <div className="hero-grain" style={{ opacity: 0.22 }} aria-hidden="true" />
         </motion.div>
 
         {/* ── Content — scroll-dissolves as image rises ───────────────────── */}

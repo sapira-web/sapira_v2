@@ -131,17 +131,12 @@
   position: absolute;
   inset: 0;
   background:
-    /* Signal traces — tonal directional residue in the depth zone */
-    radial-gradient(ellipse 55% 2%   at 72% 54%, rgba(175,158,138,0.052) 0%, transparent 100%),
-    radial-gradient(ellipse 48% 2%   at 80% 62%, rgba(175,158,138,0.040) 0%, transparent 100%),
-    radial-gradient(ellipse 58% 2.2% at 66% 69%, rgba(175,158,138,0.038) 0%, transparent 100%),
-    radial-gradient(ellipse 44% 1.8% at 84% 76%, rgba(175,158,138,0.030) 0%, transparent 100%),
-    /* Oxide warmth — anchors the resolution line of the headline */
-    radial-gradient(ellipse 50% 40% at 18% 62%, rgba(158,82,60,0.045) 0%, transparent 100%),
+    /* Oxide warmth — raised to perceptible threshold, anchors headline zone */
+    radial-gradient(ellipse 50% 40% at 18% 62%, rgba(158,82,60,0.10) 0%, transparent 100%),
     /* Diagonal field transition */
     linear-gradient(142deg, rgba(241,235,226,0.00) 35%, rgba(218,206,192,0.18) 100%),
-    /* Zone of operational depth (lower-right) */
-    radial-gradient(ellipse 70% 60% at 88% 82%, rgba(195,178,158,0.14) 0%, transparent 100%),
+    /* Zone of operational depth — shifted slightly toward center */
+    radial-gradient(ellipse 70% 60% at 82% 76%, rgba(195,178,158,0.12) 0%, transparent 100%),
     /* Zone of clarity (upper-left, content column) */
     radial-gradient(ellipse 72% 68% at 22% 36%, rgba(255,253,248,0.68) 0%, transparent 100%),
     /* Base field */
@@ -154,7 +149,7 @@
   inset: 0;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='hbg'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.38  0 0 0 0 0.36  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23hbg)'/></svg>");
   background-size: 200px 200px;
-  opacity: 0.038;
+  opacity: 0.065;
   pointer-events: none;
 }
 
@@ -211,6 +206,7 @@
   .hero-bg {
     background:
       radial-gradient(ellipse 90% 55% at 50% 28%, rgba(255,253,248,0.65) 0%, transparent 100%),
+      radial-gradient(ellipse 70% 50% at 15% 65%, rgba(158,82,60,0.08) 0%, transparent 100%),
       linear-gradient(180deg, #F3EEE7 0%, #EDE5DA 100%);
   }
 }
