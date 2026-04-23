@@ -57,7 +57,7 @@ export default function BrandClose() {
           fontWeight: 400,
           letterSpacing: '-0.045em',
           lineHeight: 0.92,
-          color: '#494848',
+          color: '#F9F9F9',
           userSelect: 'none',
         }}
         {...anim}
