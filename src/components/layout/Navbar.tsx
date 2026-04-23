@@ -24,7 +24,7 @@ export default function Navbar() {
           {/* Nav items — hidden on mobile */}
           <ul className="hidden md:flex items-center gap-8">
             {siteConfig.navigation.map((item) => (
-              <li key={item.href}>
+              <li key={item.label}>
                 <a
                   href={item.href}
                   className="nav-link text-nav font-medium text-foundation uppercase cursor-pointer focus-visible:outline-2 focus-visible:outline-ignition focus-visible:outline-offset-2"
