@@ -1,0 +1,44 @@
+{
+  "name": "sapira",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run lint && npm run typecheck && npm run build",
+    "qa": "npx tsx scripts/qa/run-all.ts",
+    "qa:baseline": "tsx scripts/qa/screenshots.ts --mode=baseline",
+    "qa:current": "tsx scripts/qa/screenshots.ts --mode=current",
+    "qa:diff": "tsx scripts/qa/visual-diff.ts",
+    "qa:overflow": "tsx scripts/qa/overflow-check.ts"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.0",
+    "@types/three": "^0.184.0",
+    "framer-motion": "^12.38.0",
+    "next": "16.2.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "simple-icons": "^16.17.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pngjs": "^6.0.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.4",
+    "pixelmatch": "^7.1.0",
+    "playwright": "^1.59.1",
+    "pngjs": "^7.0.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}

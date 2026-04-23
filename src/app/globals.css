@@ -1,0 +1,534 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-foundation: #494848;
+  --color-ignition:   #C64444;
+  --color-oxide:      #562B2A;
+  --color-structural: #C1BDB6;
+  --color-rational:   #EFEBE6;
+  --color-neutral-warm: #F9F9F9;
+
+  /* Font family */
+  --font-family-sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  /* Font sizes with line-height and letter-spacing */
+  --font-size-display-xl: 88px;
+  --line-height-display-xl: 1.02;
+  --letter-spacing-display-xl: -0.035em;
+
+  --font-size-body-large: 20px;
+  --line-height-body-large: 1.45;
+  --letter-spacing-body-large: -0.01em;
+
+  --font-size-eyebrow: 12px;
+  --line-height-eyebrow: 1;
+  --letter-spacing-eyebrow: 0.16em;
+
+  --font-size-caption: 10px;
+  --line-height-caption: 1;
+  --letter-spacing-caption: 0.18em;
+
+  --font-size-nav: 12px;
+  --line-height-nav: 1;
+  --letter-spacing-nav: 0.10em;
+
+  --font-size-cta: 16px;
+  --line-height-cta: 1;
+
+  --font-size-logo: 18px;
+  --line-height-logo: 1;
+  --letter-spacing-logo: -0.025em;
+
+  /* Spacing — add the two values Tailwind v4 defaults don't include */
+  --spacing-32: 128px;
+  --spacing-40: 160px;
+}
+
+/* Utility classes for the type scale */
+.text-display-xl {
+  font-size: var(--font-size-display-xl);
+  line-height: var(--line-height-display-xl);
+  letter-spacing: var(--letter-spacing-display-xl);
+}
+
+.text-body-large {
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body-large);
+  letter-spacing: var(--letter-spacing-body-large);
+}
+
+.text-eyebrow {
+  font-size: var(--font-size-eyebrow);
+  line-height: var(--line-height-eyebrow);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+}
+
+.text-caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  text-transform: uppercase;
+}
+
+.text-nav {
+  font-size: var(--font-size-nav);
+  line-height: var(--line-height-nav);
+  letter-spacing: var(--letter-spacing-nav);
+  text-transform: uppercase;
+}
+
+.text-cta {
+  font-size: var(--font-size-cta);
+  line-height: var(--line-height-cta);
+}
+
+.text-logo {
+  font-size: var(--font-size-logo);
+  line-height: var(--line-height-logo);
+  letter-spacing: var(--letter-spacing-logo);
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+@keyframes slowGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.video-placeholder-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(193, 189, 182, 0.3) 0%,
+    rgba(86, 43, 42, 0.15)   40%,
+    rgba(198, 68, 68, 0.08)  60%,
+    rgba(193, 189, 182, 0.3) 100%
+  );
+  background-size: 200% 200%;
+  animation: slowGradient 20s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-slow,
+  .video-placeholder-bg {
+    animation: none;
+  }
+}
+
+/* ── Hero premium background ─────────────────────────────────────────────── */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Signal traces — tonal directional residue in the depth zone */
+    radial-gradient(ellipse 55% 2%   at 72% 54%, rgba(175,158,138,0.052) 0%, transparent 100%),
+    radial-gradient(ellipse 48% 2%   at 80% 62%, rgba(175,158,138,0.040) 0%, transparent 100%),
+    radial-gradient(ellipse 58% 2.2% at 66% 69%, rgba(175,158,138,0.038) 0%, transparent 100%),
+    radial-gradient(ellipse 44% 1.8% at 84% 76%, rgba(175,158,138,0.030) 0%, transparent 100%),
+    /* Oxide warmth — anchors the resolution line of the headline */
+    radial-gradient(ellipse 50% 40% at 18% 62%, rgba(158,82,60,0.045) 0%, transparent 100%),
+    /* Diagonal field transition */
+    linear-gradient(142deg, rgba(241,235,226,0.00) 35%, rgba(218,206,192,0.18) 100%),
+    /* Zone of operational depth (lower-right) */
+    radial-gradient(ellipse 70% 60% at 88% 82%, rgba(195,178,158,0.14) 0%, transparent 100%),
+    /* Zone of clarity (upper-left, content column) */
+    radial-gradient(ellipse 72% 68% at 22% 36%, rgba(255,253,248,0.68) 0%, transparent 100%),
+    /* Base field */
+    #F2EDE6;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='hbg'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.38  0 0 0 0 0.36  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23hbg)'/></svg>");
+  background-size: 200px 200px;
+  opacity: 0.038;
+  pointer-events: none;
+}
+
+/* Depth zone breath — slow living presence in the operational field */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  right: -20%;
+  bottom: -20%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(195,178,158,0.10) 0%, transparent 70%);
+  border-radius: 50%;
+  transform-origin: center center;
+  animation: depth-breath 52s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes depth-breath {
+  0%, 100% { transform: scale(1.00); }
+  50%       { transform: scale(1.03); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::after { animation: none; }
+}
+
+/* ── Operational Presence marquee ────────────────────────────────────────── */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-strip {
+  animation: marquee 55s linear infinite;
+}
+
+.marquee-strip-reverse {
+  animation: marquee-reverse 55s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-strip,
+  .marquee-strip-reverse { animation: none; }
+}
+
+@media (max-width: 767px) {
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 28%, rgba(255,253,248,0.65) 0%, transparent 100%),
+      linear-gradient(180deg, #F3EEE7 0%, #EDE5DA 100%);
+  }
+}
+
+/* ── Hero headline gradient text ─────────────────────────────────────────── */
+/* Kept in CSS (not inline style) to avoid React reconciler backgroundClip warning */
+
+.hero-headline {
+  background-image: linear-gradient(145deg, #494848 0%, #494848 30%, #562B2A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-headline-period {
+  -webkit-text-fill-color: #C64444;
+}
+
+/* ── CTA system ──────────────────────────────────────────────────────────── */
+
+/* ── Primary CTA — Material Object ──────────────────────────────────────── */
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: #562B2A;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.90);
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+
+.cta-primary:hover {
+  background: #5f302f;
+}
+
+.cta-primary:active {
+  background: #4d2524;
+}
+
+.cta-primary:focus-visible {
+  outline: 2px solid rgba(86, 43, 42, 0.45);
+  outline-offset: 3px;
+}
+
+.cta-primary .cta-arrow {
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.45;
+  transition: opacity 200ms ease;
+}
+
+.cta-primary:hover .cta-arrow {
+  opacity: 0.88;
+}
+
+/* ── Secondary CTA — Outlined Companion ─────────────────────────────────── */
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(73, 72, 72, 0.04);
+  border: 1px solid rgba(73, 72, 72, 0.36);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(73, 72, 72, 0.82);
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.cta-secondary:hover {
+  background: rgba(73, 72, 72, 0.07);
+  border-color: rgba(73, 72, 72, 0.46);
+  color: rgba(73, 72, 72, 0.92);
+}
+
+.cta-secondary:active {
+  background: rgba(73, 72, 72, 0.10);
+  border-color: rgba(73, 72, 72, 0.52);
+  color: rgba(73, 72, 72, 1);
+}
+
+.cta-secondary:focus-visible {
+  outline: 2px solid rgba(73, 72, 72, 0.22);
+  outline-offset: 3px;
+}
+
+.cta-secondary .cta-arrow {
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.76;
+  transition: transform 200ms ease, opacity 160ms ease;
+}
+
+.cta-secondary:hover .cta-arrow {
+  transform: translateX(3px);
+  opacity: 0.90;
+}
+
+.nav-link {
+  color: #494848;
+  text-decoration: none;
+  position: relative;
+  transition: color 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 0;
+  border-bottom: 1px dotted #C64444;
+  transition: width 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover {
+  color: #494848;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link[aria-current="page"]::after {
+  width: 100%;
+  border-bottom-color: #C64444;
+}
+
+.cta-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(73, 72, 72, 0.58);
+  padding: 0;
+  background: none;
+  border: none;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.cta-nav-pill:hover {
+  color: rgba(73, 72, 72, 0.90);
+}
+
+.cta-nav-pill .cta-nav-arrow {
+  font-size: 11px;
+  opacity: 0.55;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.cta-nav-pill:hover .cta-nav-arrow {
+  transform: translateX(2px);
+  opacity: 0.85;
+}
+
+/* ── Grain — nucleate-style fine camera noise ────────────────────────────── */
+
+.nucleate-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='wn'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch' seed='9'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.98 0 0 0 0 0.95 0 0 0 0.85 0'/></filter><rect width='100%' height='100%' filter='url(%23wn)'/></svg>");
+  background-size: 220px 220px;
+  background-repeat: repeat;
+}
+
+.nucleate-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250'><filter id='wn2'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 0.97 0 0 0 0 0.93 0 0 0 0.70 0'/></filter><rect width='100%' height='100%' filter='url(%23wn2)'/></svg>");
+  background-size: 140px 140px;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+
+/* ── Hero grain — more present, cinematic, photographic ─────────────────── */
+
+/* Layer 1: #494848 warm dark neutral — soft-light creates perceptible darkening grain */
+/* feColorMatrix: RGB locked to #494848 (0.286, 0.282, 0.282), alpha driven by noise */
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='hg'><feTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch' seed='7'/><feColorMatrix values='0 0 0 0 0.286  0 0 0 0 0.282  0 0 0 0 0.282  5 0 0 0 -1.5'/></filter><rect width='100%' height='100%' filter='url(%23hg)'/></svg>");
+  background-size: 160px 160px;
+  background-repeat: repeat;
+}
+
+/* Layer 2: #562B2A warm oxide — very subtle warmth support only */
+/* feColorMatrix: RGB locked to #562B2A (0.337, 0.169, 0.165), fine grain */
+.hero-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='hg2'><feTurbulence type='fractalNoise' baseFrequency='1.30' numOctaves='3' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0.337  0 0 0 0 0.169  0 0 0 0 0.165  4 0 0 0 -1.2'/></filter><rect width='100%' height='100%' filter='url(%23hg2)'/></svg>");
+  background-size: 110px 110px;
+  background-repeat: repeat;
+  opacity: 0.30;
+  mix-blend-mode: soft-light;
+}
+
+/* ── Value Proposition visualization animations ──────────────────────────── */
+
+@keyframes viz-breathe {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 1; }
+}
+
+@keyframes viz-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes viz-pulse-dot {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.3); }
+}
+
+.viz-breathe {
+  animation: viz-breathe 3s ease-in-out infinite;
+}
+
+.viz-rotate {
+  animation: viz-rotate 40s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.viz-pulse {
+  animation: viz-pulse-dot 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viz-breathe,
+  .viz-rotate,
+  .viz-pulse {
+    animation: none;
+  }
+}
+
+
+/* ── Responsive column padding — ValuePropositions ──────────────────────── */
+
+:root {
+  --vp-col-pad: 64px;
+}
+
+@media (min-width: 1280px) {
+  :root { --vp-col-pad: 80px; }
+}
+
+@media (min-width: 1536px) {
+  :root { --vp-col-pad: 96px; }
+}
+
+/* Base resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: clip;
+  background-color: var(--color-rational);
+  color: var(--color-foundation);
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Cursor safety net — ensures system cursor is always visible ─────────── */
+
+html, body, * {
+  cursor: auto;
+}
+
+a, a *,
+button, button *,
+[role="button"], [role="button"] *,
+[data-cursor-label], [data-cursor-label] *,
+summary {
+  cursor: pointer !important;
+}
+
+input, textarea, [contenteditable] {
+  cursor: text !important;
+}
