@@ -171,7 +171,7 @@ export default function Hero() {
                   className="cta-secondary justify-between w-full sm:w-auto"
                   style={{ padding: '14px 28px', fontSize: '12px', gap: '12px' }}
                 >
-                  <span>How Pharo works</span>
+                  <span>Read how we work</span>
                   <span className="cta-arrow">→</span>
                 </a>
               </motion.div>
