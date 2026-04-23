@@ -43,7 +43,7 @@ export default function BrandClose() {
           inset:         0,
           pointerEvents: 'none',
           zIndex:        0,
-          background:    'radial-gradient(ellipse 65% 85% at 18% 55%, rgba(158,82,60,0.08) 0%, transparent 65%)',
+          background:    'radial-gradient(ellipse 65% 85% at 18% 55%, rgba(158,82,60,0.10) 0%, transparent 65%)',
         }}
       />
       <div className="nucleate-grain" style={{ zIndex: 1, opacity: 0.09 }} aria-hidden="true" />
